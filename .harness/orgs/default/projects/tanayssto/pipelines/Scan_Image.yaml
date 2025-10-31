@@ -8,7 +8,7 @@ pipeline:
     ci:
       codebase:
         connectorRef: tanays
-        repoName: https://github.com/tanaysethi-traceable/WebGoat
+        repoName: https://github.com/tanaysethi-traceable/VAMPI
         build: <+input>
         sparseCheckout: []
   stages:
