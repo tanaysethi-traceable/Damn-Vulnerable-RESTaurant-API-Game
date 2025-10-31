@@ -8,7 +8,7 @@ pipeline:
     ci:
       codebase:
         connectorRef: tanays
-        repoName: https://github.com/tanaysethi-traceable/VAMPI
+        repoName: https://github.com/tanaysethi-traceable/Damn-Vulnerable-RESTaurant-API-Game
         build: <+input>
         sparseCheckout: []
   stages:
