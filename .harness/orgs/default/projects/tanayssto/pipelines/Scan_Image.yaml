@@ -1,0 +1,52 @@
+pipeline:
+  name: Scan Image
+  identifier: Scan_Image
+  projectIdentifier: tanayssto
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: tanays
+        repoName: https://github.com/tanaysethi-traceable/WebGoat
+        build: <+input>
+        sparseCheckout: []
+  stages:
+    - stage:
+        name: Scan Base Image
+        identifier: Scan_Base_Image
+        description: ""
+        type: SecurityTests
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            override: false
+          buildIntelligence:
+            enabled: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Grype
+                  name: Grype_1
+                  identifier: Grype_1
+                  spec:
+                    mode: orchestration
+                    config: default
+                    target:
+                      type: container
+                      detection: auto
+                    advanced:
+                      log:
+                        level: info
+                    privileged: true
+                    image:
+                      type: docker_v2
+                      tag: latest
+                      name: webgoat/webgoat
